@@ -2,7 +2,7 @@
 import peasy.*;
 
 //Classes
-planets sun;
+//planets sun;
 planets mercury;
 planets venus;
 planets earth;
@@ -12,12 +12,15 @@ planets jupiter;
 PeasyCam cam;
 
 //Global Vars
-float earthRadius = 6378.1 /2;
+float scl = 1000;
+float earthRadius = 6378.1; //real radius = 6378.1
 float sunRadius = earthRadius * 109;
 float mercuryRadius = earthRadius * 0.3829;
 float venusRadius = earthRadius * 0.902;
 float marsRadius = earthRadius * 0.533;
 float jupiterRadius = earthRadius * 11.209;
+PShape sun;
+
 
 //Textures
 PImage sunMesh;
@@ -38,25 +41,37 @@ void setup() {
   mercuryMesh = loadImage("mercury_texture.png");
   marsMesh = loadImage("mars_texture.jpg");
 
-  sun = new planets(sunRadius, 0, sunMesh, 10);
-  mercury = new planets(mercuryRadius, 0.4, mercuryMesh);
-  venus = new planets(venusRadius, 0.7, venusMesh);
-  earth = new planets(earthRadius, 1, earthMesh);
-  mars = new planets(marsRadius, 1.5, marsMesh);
-  jupiter = new planets(jupiterRadius, 5.2, earthMesh, true);
+  // planets(radius, distance (from center), texture);
+  //sun = new planets(sunRadius, 0, sunMesh);
+  mercury = new planets("Mercury", mercuryRadius, 0.4, mercuryMesh);
+  venus = new planets("Venus", venusRadius, 0.7, venusMesh);
+  earth = new planets("Earth",earthRadius, 1, earthMesh);
+  mars = new planets("Mars", marsRadius, 1.5, marsMesh);
+  jupiter = new planets("Jupiter", jupiterRadius, 5.2, earthMesh);
   
-  cam = new PeasyCam(this, 4900);
+  cam = new PeasyCam(this, 4000);
 }
 
 void draw() {
   background(background);
   rotateY(PI/3);
-  sun.display();
+  //sun.display();
+  drawSun();
+  pointLight(255, 255, 255, 0, 0, 0);
   earth.display();
   mercury.display();
   venus.display();
   mars.display();
   jupiter.display();
-  sphere(10);
-  rotateY(PI/4);
+;  sphere(10);
+  
+}
+
+void drawSun(){
+    beginShape();
+    noStroke();
+    sun = createShape(SPHERE, sunRadius/scl);
+    sun.setTexture(sunMesh);
+    shape(sun, 0, 0);
+    endShape();
 }

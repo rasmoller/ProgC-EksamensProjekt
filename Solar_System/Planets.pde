@@ -1,35 +1,25 @@
 class planets {
-  float d;
-  float r;
+  float Distance;
+  float Radius;
   PShape sphere;
-  PImage t;
-  float scl = 75;
+  PImage Texture;
   float AU = 1496 * 2;
-  float outerAU = AU / 2;
+  String name;
 
-  planets(float Radius, float Distance, PImage Texture) {
-    r = Radius / scl;
-    d = (Distance * AU) / (scl/50);
-    t = Texture;
-  }
-  planets(float Radius, float Distance, PImage Texture, float scale) {
-    r = Radius / (scl * scale);
-    d = Distance * AU;
-    t = Texture;
-  }
-  planets(float Radius, float Distance, PImage Texture, boolean outer) {
-    r = Radius / scl;
-    d = (Distance * outerAU) / (scl/50);
-    t = Texture;
+  planets(String name,float Radius, float Distance, PImage Texture) {
+    this.name = name;
+    this.Radius = Radius;
+    this.Distance = ((Distance * AU) / 10) + sunRadius/scl;
+    this.Texture = Texture;
   }
   
 
   void display() {
     beginShape();
     noStroke();
-    sphere = createShape(SPHERE, r);
-    sphere.setTexture(t);
-    shape(sphere, d, 0);
+    sphere = createShape(SPHERE, Radius/scl);
+    sphere.setTexture(Texture);
+    shape(sphere, Distance, 0);
     endShape();
   }
 }
