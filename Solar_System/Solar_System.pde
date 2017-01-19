@@ -20,6 +20,7 @@ float venusRadius = earthRadius * 0.902;
 float marsRadius = earthRadius * 0.533;
 float jupiterRadius = earthRadius * 11.209;
 PShape sun;
+boolean drawName;
 
 
 //Textures
@@ -45,33 +46,40 @@ void setup() {
   //sun = new planets(sunRadius, 0, sunMesh);
   mercury = new planets("Mercury", mercuryRadius, 0.4, mercuryMesh);
   venus = new planets("Venus", venusRadius, 0.7, venusMesh);
-  earth = new planets("Earth",earthRadius, 1, earthMesh);
+  earth = new planets("Earth", earthRadius, 1, earthMesh);
   mars = new planets("Mars", marsRadius, 1.5, marsMesh);
   jupiter = new planets("Jupiter", jupiterRadius, 5.2, earthMesh);
-  
+
   cam = new PeasyCam(this, 4000);
 }
 
 void draw() {
   background(background);
-  rotateY(PI/3);
   //sun.display();
   drawSun();
-  pointLight(255, 255, 255, 0, 0, 0);
+  // pointLight(r, g, b, x, y, z);
+  pointLight(200, 200, 200, 0, 0, 0);
   earth.display();
   mercury.display();
   venus.display();
   mars.display();
   jupiter.display();
-;  sphere(10);
-  
+  sphere(10);
+  drawNames();
 }
 
-void drawSun(){
-    beginShape();
-    noStroke();
-    sun = createShape(SPHERE, sunRadius/scl);
-    sun.setTexture(sunMesh);
-    shape(sun, 0, 0);
-    endShape();
+void drawSun() {
+  beginShape();
+  noStroke();
+  sun = createShape(SPHERE, sunRadius/scl);
+  sun.setTexture(sunMesh);
+  shape(sun, 0, 0);
+  endShape();
+}
+void drawNames() {
+  if (keyPressed) {
+    if (key == 't') {
+      drawName = !drawName;
+    }
+  }
 }
