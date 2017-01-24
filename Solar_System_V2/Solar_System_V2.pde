@@ -9,16 +9,16 @@ Planets earth;
 PeasyCam cam;
 
 //global Var
-boolean drawNames;
+boolean drawNames = false;
 
 void setup() {
   size(700, 700, P3D);
   // planets initializing
-  sun = new Planets(100, 0, 0, #B46666);
-  earth = new Planets(20, 0, 150, #31B41D);
+  sun = new Planets("Sun", 100, 0, 0, 0, #B46666);
+  earth = new Planets("Earth", 20, 0, 150, 0, #31B41D);
   planets.add(sun);
   planets.add(earth);
-  cam = new PeasyCam(this, 200);
+  cam = new PeasyCam(this, 300);
 }
 
 void draw() {
@@ -26,5 +26,11 @@ void draw() {
   pointLight(255, 255, 255, 0, 0, 0);
   for (Planets planet : planets) {
     planet.display();
+  }
+}
+
+void keyReleased() {
+  if (key == 't' || key == 'T') {
+    drawNames = !drawNames;
   }
 }
