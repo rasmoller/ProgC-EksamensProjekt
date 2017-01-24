@@ -14,40 +14,17 @@ boolean drawNames;
 void setup() {
   size(700, 700, P3D);
   // planets initializing
-  sun = new Planets(10, 0, 0);
-  earth = new Planets(2, 0, 30);
+  sun = new Planets(100, 0, 0, #B46666);
+  earth = new Planets(20, 0, 150, #31B41D);
   planets.add(sun);
   planets.add(earth);
-  cam = new PeasyCam(this, 100);
+  cam = new PeasyCam(this, 200);
 }
 
 void draw() {
-  background(255);
-}
-
-class Planets {
-  float radius, angle, distance;
-  PImage texture;
-  PShape planet;
-
-  Planets(float radius, float angle, float distance) {
-    //this.texture = texture;
-    this.distance = distance;
-    this.radius = radius;
-    this.angle = angle;
-  }
-  
-  void moons(String name, float size, float distance){
-    
-  
-  }
-  
-  void display(){
-  beginShape();
-  planet = createShape(SPHERE, radius);
-  //planet.setTexture(texture);
-  
-  endShape();
-    
+  background(150);
+  pointLight(255, 255, 255, 0, 0, 0);
+  for (Planets planet : planets) {
+    planet.display();
   }
 }
