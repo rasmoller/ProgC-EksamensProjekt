@@ -10,14 +10,22 @@ PeasyCam cam;
 
 //global Var
 boolean drawNames = false;
-float earthSpeed;
+// orbit speed's
+float earthSpeed = 0.005;
 float marsSpeed;
 float venusSpeed;
 float mercurySpeed;
 float jupiterSpeed;
 
+// rotation speed's
+float earthRotation;
+float marsRotation;
+float venusRotation;
+float mercuryRotation;
+float jupiterRotation;
+float uranusRotation;
+
 // textures
-PImage earthMesh;
 PImage sunMesh;
 PImage venusMesh;
 PImage jupiterMesh;
@@ -30,8 +38,8 @@ void setup() {
   size(700, 700, P3D);
   loadImages();
   // planets initializing
-  sun = new Planets("Sun", 100, 0, sunMesh, 0);
-  earth = new Planets("Earth", 20, 150, earthMesh, earthSpeed);
+  sun = new Planets("Sun", 100, 0, sunMesh, 0, 0);
+  earth = new Planets("Earth", 20, 150, earthMesh, earthSpeed, earthRotation);
   planets.add(earth);
   cam = new PeasyCam(this, 300);
 }
