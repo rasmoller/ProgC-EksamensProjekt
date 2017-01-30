@@ -1,17 +1,18 @@
 class Planets {
-  float radius, angle, distance;
+  float radius, speed, distance;
   String name;
   PImage texture;
   PShape planet;
   PVector position;
   color c;
 
-  Planets(String name, float radius, float x, float y, float z, color c) {
-    //this.texture = texture;
+  Planets(String name, float radius, float distance, PImage texture, float speed) {
+    this.texture = texture;
+    this.speed = speed;
     this.name = name;
-    position = new PVector(x, y, z);
+    position = new PVector(distance, 0);
     this.radius = radius;
-    this.c = c;
+    //this.c = c;
   }
 
   void moons(String name, float size, float distance) {
@@ -20,9 +21,9 @@ class Planets {
   void display() {
     beginShape();
     noStroke();
-    fill(c);
+    //fill(c);
     planet = createShape(SPHERE, radius);
-    //planet.setTexture(texture);
+    planet.setTexture(texture);
 
     endShape();
     translate(position.x, position.y, position.z);
