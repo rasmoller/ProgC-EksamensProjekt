@@ -5,9 +5,11 @@ class Planets {
   PShape planet;
   color c;
   float angle = 0;
+  float rotation = 0;
+  float inclination;
 
 
-  Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle) {
+  Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle, float inclination) {
     this.texture = texture;
     this.orbitSpeed = orbitSpeed;
     this.rotationSpeed = rotationSpeed;
@@ -15,6 +17,7 @@ class Planets {
     this.distance = distance;
     this.radius = radius;
     this.angle = startAngle;
+    this.inclination = inclination;
   }
 
   void moons(String name, float size, float distance) {
@@ -22,7 +25,7 @@ class Planets {
 
   void display() {
     // find a way to make speed a multiplier for angle
-    if (angle < 360) {
+    if (angle < TWO_PI*2) {
       pushMatrix();
       beginShape();
       noStroke();
@@ -32,7 +35,15 @@ class Planets {
       endShape();
       rotateY(angle);
       translate(distance, 0);
-      shape(planet, 0, 0);
+      if (rotation < TWO_PI*2) {
+        pushMatrix();
+        rotateY(rotation);
+        shape(planet, 0, 0);
+        popMatrix();
+        rotation += rotationSpeed;
+      } else {
+        rotation = 0;
+      }
       if (drawNames) {
         printName();
       }
@@ -49,14 +60,15 @@ class Planets {
   void printName() {
     pushStyle();
     stroke(2);
-    translate(0, 0 - (radius + (radius * 0.4)));
     pushMatrix();
     rotateX(cameraRotations[0]);
-    rotateY(-angle);
     rotateY(cameraRotations[1]);
-    rotateZ(cameraRotations[2]);
-    textSize(10);
+    rotateY(-angle);
+    //rotateZ(cameraRotations[2]);
+    translate(0, 0 - (radius + (radius * 0.4)));
+    textSize(30);
     textAlign(CENTER);
+    fill(255);
     text(name, 0, 0, 0);
     popMatrix();
     popStyle();
