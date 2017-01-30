@@ -31,8 +31,8 @@ float[] cameraRotations;
 float distanceScale = 500000;
 
 // Planet sizes
-float earthRadius = 6.378;
-float sunRadius = earthRadius * 15;
+float earthRadius = 6.378; // original størrelse = 6.378, noget
+float sunRadius = earthRadius * 15; // eneste der ikke er akkurat og bruger jorden til at definere de andre
 float mercuryRadius = earthRadius * 0.383;
 float venusRadius = earthRadius * 0.95;
 float marsRadius = earthRadius * 0.532;
