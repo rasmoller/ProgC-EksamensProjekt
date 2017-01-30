@@ -108,10 +108,10 @@ void setup() {
   venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, 0, venusInclination);
   earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, 0, earthInclination);
   mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, 0, marsInclination);
-  jupiter = new Planets("Jupiters", jupiterRadius, jupiterDistance, marsMesh, jupiterSpeed, jupiterRotation, 0, jupiterInclination);
-  saturn = new Planets("Saturn", saturnRadius, saturnDistance, marsMesh, saturnSpeed, saturnRotation, 0, saturnInclination);
-  uranus = new Planets("Uranus", uranusRadius, uranusDistance, marsMesh, uranusSpeed, uranusRotation, 0, uranusInclination);
-  neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, marsMesh, neptuneSpeed, neptuneRotation, 0, neptuneInclination);
+  jupiter = new Planets("Jupiters", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, 0, jupiterInclination);
+  saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, 0, saturnInclination);
+  uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, 0, uranusInclination);
+  neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, 0, neptuneInclination);
 
   // adding objects to arraylist (im excluding the sun to make lighting works)
   planets.add(mercury);
@@ -160,6 +160,8 @@ void loadImages() {
   venusMesh = loadImage("venus_texture.jpg");
   earthMesh = loadImage("earth_texture.jpg");
   marsMesh = loadImage("mars_texture.jpg");
-  //sunMesh = loadImage();
-  //sunMesh = loadImage();
+  jupiterMesh = loadImage("jupiter_texture.jpg");
+  saturnMesh = loadImage("saturn_texture.jpg");
+  uranusMesh = loadImage("uranus_texture.jpg");
+  neptuneMesh = loadImage("neptune_texture.jpg");
 }
