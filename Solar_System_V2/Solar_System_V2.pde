@@ -26,6 +26,7 @@ float jupiterRotation;
 float uranusRotation;
 
 // textures
+PImage earthMesh;
 PImage sunMesh;
 PImage venusMesh;
 PImage jupiterMesh;
