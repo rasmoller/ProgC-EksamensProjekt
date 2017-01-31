@@ -9,7 +9,7 @@ class Menu {
     rotateX(cameraRotations[0]);
     rotateY(cameraRotations[1]);
     rotateZ(cameraRotations[2]);
-    translate(-1920/2, -960/2);
+    translate(-width/2, -height/2);
     //translate(); brug cam.getDistance(); og noget andet til at få menuen til at scalere
     pushStyle();
     fill(51);

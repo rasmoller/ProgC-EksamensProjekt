@@ -99,7 +99,8 @@ PImage uranusMesh;
 PImage neptuneMesh;
 
 void setup() {
-  size(1920, 960, P3D);
+  fullScreen(P3D);
+  //size(1920, 960, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages();
@@ -139,6 +140,7 @@ void setup() {
 
 void draw() {
   cameraRotations = cam.getRotations();
+  background.resize(width, height);
   background(background);
   sun.display();
   menu.displayBox();
@@ -149,7 +151,7 @@ void draw() {
   
   //println(frameRate);
   println(cam.getDistance());
-  //println(cameraRotations);
+  println(cameraRotations);
 }
 
 void keyReleased() {
