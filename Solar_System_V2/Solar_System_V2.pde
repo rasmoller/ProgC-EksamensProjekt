@@ -1,9 +1,9 @@
 /* 
  Sources:
  https://en.wikipedia.org/wiki/Solar_System
- 
+ http://mrfeinberg.com/peasycam/
  */
-// library by Jonathan Feinberg
+// library by Jonathan Feinberg - http://mrfeinberg.com/peasycam/
 import peasy.*;
 
 ArrayList<Planets> planets = new ArrayList<Planets>();
