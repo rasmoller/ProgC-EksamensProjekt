@@ -44,6 +44,7 @@ class Planets {
       } else {
         rotation = 0;
       }
+      
       if (drawNames) {
         printName();
       }
@@ -62,9 +63,9 @@ class Planets {
     stroke(2);
     pushMatrix();
     rotateX(cameraRotations[0]);
-    rotateY(cameraRotations[1]);
     rotateY(-angle);
-    //rotateZ(cameraRotations[2]);
+    rotateY(cameraRotations[1]);
+    rotateZ(cameraRotations[2]);
     translate(0, 0 - (radius + (radius * 0.4)));
     textSize(30);
     textAlign(CENTER);

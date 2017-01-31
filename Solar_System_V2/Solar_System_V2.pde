@@ -100,6 +100,7 @@ PImage neptuneMesh;
 void setup() {
   size(1920, 960, P3D);
   frameRate(60);
+  surface.setTitle("Solar System V2");
   loadImages();
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
@@ -132,13 +133,17 @@ void setup() {
 }
 
 void draw() {
+  cameraRotations = cam.getRotations();
   background(background);
   sun.display();
+  menu();
   pointLight(255, 255, 255, 0, 0, 0);
-  cameraRotations = cam.getRotations();
   for (Planets planet : planets) {
     planet.display();
   }
+  
+  //println(frameRate);
+  //println(cameraRotations);
 }
 
 void keyReleased() {
