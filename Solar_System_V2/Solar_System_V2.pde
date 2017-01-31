@@ -9,15 +9,10 @@ import peasy.*;
 ArrayList<Planets> planets = new ArrayList<Planets>();
 
 // planets
-Planets sun;
-Planets mercury;
-Planets venus;
-Planets earth;
-Planets mars;
-Planets jupiter;
-Planets saturn;
-Planets uranus;
-Planets neptune;
+Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
+
+// textures
+PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh;
 
 PeasyCam cam;
 Menu menu;
@@ -29,11 +24,11 @@ boolean drawNames = false;
 boolean drawOrbit = false;
 boolean tiltTrue = false;
 float[] cameraRotations;
-float distanceScale = 500000;
+float distanceScale = 700000;
 
 // Planet sizes
 float earthRadius = 6.378; // original størrelse = 6.378, noget
-float sunRadius = earthRadius * 15; // eneste der ikke er akkurat og bruger jorden til at definere de andre
+float sunRadius = earthRadius * 12; // eneste der ikke er akkurat og bruger jorden til at definere de andre
 float mercuryRadius = earthRadius * 0.383;
 float venusRadius = earthRadius * 0.95;
 float marsRadius = earthRadius * 0.532;
@@ -50,7 +45,7 @@ float AU = 149597870.7 / distanceScale;
 float mercuryDistance = AU * 0.387;
 float venusDistance = AU * 0.723;
 float earthDistance = AU * 1;
-float marsDistance = AU * 1.66;
+float marsDistance = AU * 1.52;
 float jupiterDistance = AU * 5.2;
 float saturnDistance = AU * 10;
 float uranusDistance = AU * 20.1;
@@ -86,25 +81,13 @@ float saturnRotation = 0.002;
 float uranusRotation = 0.002;
 float neptuneRotation = 0.002;
 
-// textures
-PImage background;
-PImage sunMesh;
-PImage mercuryMesh;
-PImage venusMesh;
-PImage earthMesh;
-PImage marsMesh;
-PImage jupiterMesh;
-PImage saturnMesh;
-PImage uranusMesh;
-PImage neptuneMesh;
-
 void setup() {
   fullScreen(P3D);
   //size(1920, 960, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages();
-  
+
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
   sun = new Planets("Sun", sunRadius, 0, sunMesh, 0, 0, 0, 0);
@@ -133,22 +116,34 @@ void setup() {
   cam.setMaximumDistance(camMaximum);
   cam.setSuppressRollRotationMode();
   cam.setCenterDragHandler(null);
-  
+
   // Menu initializing
   menu = new Menu();
 }
 
 void draw() {
+  /*****Using its rotations to place name of planets*****/
   cameraRotations = cam.getRotations();
+  
+  /*********First resizing the background so it fits all resolutions then applying it**************/
   background.resize(width, height);
   background(background);
-  sun.display();
+  /*****Menu for information about the planets*****/
   menu.displayBox();
+  
+  /*******Drawing sun before light cause otherwise the inside of the sun would light up*********/
+  sun.display();
+  
+  /*******Lights (r, g, b, x, y, z) it shines outwards********/
   pointLight(255, 255, 255, 0, 0, 0);
+  
+  /*********Enhanced for loop to go through all planets created***********/
   for (Planets planet : planets) {
     planet.display();
   }
   
+  /********DEBUGGING*********/
+  debug();
   //println(frameRate);
   println(cam.getDistance());
   println(cameraRotations);
@@ -177,4 +172,17 @@ void loadImages() {
   saturnMesh = loadImage("saturn_texture.jpg");
   uranusMesh = loadImage("uranus_texture.jpg");
   neptuneMesh = loadImage("neptune_texture.jpg");
+}
+
+
+void debug() {
+  pushStyle();
+  stroke(200);
+  line(0, 0, 0, 1000, 0, 0);
+  line(0, 0, 0, 0, 1000, 0);
+  line(0, 0, 0, 0, 0, 1000);
+  line(0, 0, 0, -1000, 0, 0);
+  line(0, 0, 0, 0, -1000, 0);
+  line(0, 0, 0, 0, 0, -1000);
+  popStyle();
 }
