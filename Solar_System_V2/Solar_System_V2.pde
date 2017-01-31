@@ -20,6 +20,7 @@ Planets uranus;
 Planets neptune;
 
 PeasyCam cam;
+Menu menu;
 
 //global Var
 float camMinimum = 200;
@@ -102,6 +103,7 @@ void setup() {
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages();
+  
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
   sun = new Planets("Sun", sunRadius, 0, sunMesh, 0, 0, 0, 0);
@@ -124,25 +126,29 @@ void setup() {
   planets.add(uranus);
   planets.add(neptune);
 
-
   // using peasycam library to get a controlled camera
   cam = new PeasyCam(this, 750);
   cam.setMinimumDistance(camMinimum);
   cam.setMaximumDistance(camMaximum);
   cam.setSuppressRollRotationMode();
+  cam.setCenterDragHandler(null);
+  
+  // Menu initializing
+  menu = new Menu();
 }
 
 void draw() {
   cameraRotations = cam.getRotations();
   background(background);
   sun.display();
-  menu();
+  menu.displayBox();
   pointLight(255, 255, 255, 0, 0, 0);
   for (Planets planet : planets) {
     planet.display();
   }
   
   //println(frameRate);
+  println(cam.getDistance());
   //println(cameraRotations);
 }
 
