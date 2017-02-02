@@ -10,12 +10,11 @@ ArrayList<Planets> planets = new ArrayList<Planets>();
 
 // planets
 Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
-<<<<<<< HEAD
-=======
+
 
 // textures
 PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh;
->>>>>>> origin/master
+
 
 PeasyCam cam;
 Menu menu;
@@ -30,13 +29,9 @@ float[] cameraRotations;
 float distanceScale = 700000;
 
 // Planet sizes
-<<<<<<< HEAD
+
 float earthRadius = 6.378; // original størrelse = 6.378, noget km
 float sunRadius = earthRadius * 15; // eneste der ikke er akkurat og bruger jorden til at definere de andre
-=======
-float earthRadius = 6.378; // original størrelse = 6.378, noget
-float sunRadius = earthRadius * 12; // eneste der ikke er akkurat og bruger jorden til at definere de andre
->>>>>>> origin/master
 float mercuryRadius = earthRadius * 0.383;
 float venusRadius = earthRadius * 0.95;
 float marsRadius = earthRadius * 0.532;
@@ -89,12 +84,8 @@ float saturnRotation = 0.002;
 float uranusRotation = 0.002;
 float neptuneRotation = 0.002;
 
-<<<<<<< HEAD
-// textures
-PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh;
 
-=======
->>>>>>> origin/master
+
 void setup() {
   fullScreen(P3D);
   //size(1920, 960, P3D);
@@ -155,16 +146,15 @@ void draw() {
   for (Planets planet : planets) {
     planet.display();
   }
-<<<<<<< HEAD
-  println(frameRate);
-=======
+
+
   
   /********DEBUGGING*********/
   debug();
   //println(frameRate);
   println(cam.getDistance());
   println(cameraRotations);
->>>>>>> origin/master
+
 }
 
 void keyReleased() {

@@ -36,11 +36,7 @@ class Planets {
       endShape();
       rotateY(angle);
       translate(distance, 0);
-<<<<<<< HEAD
-      
-=======
       // the planets own rotation
->>>>>>> origin/master
       if (rotation < TWO_PI*2) {
         pushMatrix();
         rotateY(rotation);
