@@ -9,15 +9,7 @@ import peasy.*;
 ArrayList<Planets> planets = new ArrayList<Planets>();
 
 // planets
-Planets sun;
-Planets mercury;
-Planets venus;
-Planets earth;
-Planets mars;
-Planets jupiter;
-Planets saturn;
-Planets uranus;
-Planets neptune;
+Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
 
 PeasyCam cam;
 
@@ -31,7 +23,7 @@ float[] cameraRotations;
 float distanceScale = 500000;
 
 // Planet sizes
-float earthRadius = 6.378; // original størrelse = 6.378, noget
+float earthRadius = 6.378; // original størrelse = 6.378, noget km
 float sunRadius = earthRadius * 15; // eneste der ikke er akkurat og bruger jorden til at definere de andre
 float mercuryRadius = earthRadius * 0.383;
 float venusRadius = earthRadius * 0.95;
@@ -86,16 +78,7 @@ float uranusRotation = 0.002;
 float neptuneRotation = 0.002;
 
 // textures
-PImage background;
-PImage sunMesh;
-PImage mercuryMesh;
-PImage venusMesh;
-PImage earthMesh;
-PImage marsMesh;
-PImage jupiterMesh;
-PImage saturnMesh;
-PImage uranusMesh;
-PImage neptuneMesh;
+PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh;
 
 void setup() {
   size(1920, 960, P3D);
@@ -108,7 +91,7 @@ void setup() {
   venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, 0, venusInclination);
   earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, 0, earthInclination);
   mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, 0, marsInclination);
-  jupiter = new Planets("Jupiters", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, 0, jupiterInclination);
+  jupiter = new Planets("Jupiter", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, 0, jupiterInclination);
   saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, 0, saturnInclination);
   uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, 0, uranusInclination);
   neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, 0, neptuneInclination);
@@ -139,6 +122,7 @@ void draw() {
   for (Planets planet : planets) {
     planet.display();
   }
+  println(frameRate);
 }
 
 void keyReleased() {

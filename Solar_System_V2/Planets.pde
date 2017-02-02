@@ -35,6 +35,7 @@ class Planets {
       endShape();
       rotateY(angle);
       translate(distance, 0);
+      
       if (rotation < TWO_PI*2) {
         pushMatrix();
         rotateY(rotation);
