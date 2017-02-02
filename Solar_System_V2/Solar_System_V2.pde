@@ -25,11 +25,12 @@ float camMaximum = 10000;
 boolean drawNames = false;
 boolean drawOrbit = false;
 boolean tiltTrue = false;
+boolean debug = false;
 float[] cameraRotations;
 float distanceScale = 700000;
+float debugDistance = 3000;
 
 // Planet sizes
-
 float earthRadius = 6.378; // original størrelse = 6.378, noget km
 float sunRadius = earthRadius * 15; // eneste der ikke er akkurat og bruger jorden til at definere de andre
 float mercuryRadius = earthRadius * 0.383;
@@ -150,11 +151,9 @@ void draw() {
 
   
   /********DEBUGGING*********/
+  if(debug){
   debug();
-  //println(frameRate);
-  println(cam.getDistance());
-  println(cameraRotations);
-
+  }
 }
 
 void keyReleased() {
@@ -166,6 +165,9 @@ void keyReleased() {
   }
   if (key == 'f' || key == 'F') {
     drawOrbit = !drawOrbit;
+  }
+  if(key == '+' || key == '?'){
+    debug = !debug;
   }
 }
 
@@ -186,11 +188,14 @@ void loadImages() {
 void debug() {
   pushStyle();
   stroke(200);
-  line(0, 0, 0, 1000, 0, 0);
-  line(0, 0, 0, 0, 1000, 0);
-  line(0, 0, 0, 0, 0, 1000);
-  line(0, 0, 0, -1000, 0, 0);
-  line(0, 0, 0, 0, -1000, 0);
-  line(0, 0, 0, 0, 0, -1000);
+  line(0, 0, 0, debugDistance, 0, 0);
+  line(0, 0, 0, 0, debugDistance, 0);
+  line(0, 0, 0, 0, 0, debugDistance);
+  line(0, 0, 0, -debugDistance, 0, 0);
+  line(0, 0, 0, 0, -debugDistance, 0);
+  line(0, 0, 0, 0, 0, -debugDistance);
   popStyle();
+  println(frameRate);
+  println(cam.getDistance());
+  println(cameraRotations);
 }
