@@ -4,7 +4,7 @@ class Planets {
   PImage texture;
   PShape planet;
   color c;
-  float angle = 0;
+  float angle;
   float rotation = 0;
   float inclination;
 
@@ -16,7 +16,7 @@ class Planets {
     this.name = name;
     this.distance = distance;
     this.radius = radius;
-    this.angle = startAngle;
+    this.angle = 0 + startAngle;
     this.inclination = inclination;
   }
 
@@ -25,6 +25,7 @@ class Planets {
 
   void display() {
     // find a way to make speed a multiplier for angle
+    // the angle of the orbit
     if (angle < TWO_PI*2) {
       pushMatrix();
       beginShape();
@@ -35,7 +36,11 @@ class Planets {
       endShape();
       rotateY(angle);
       translate(distance, 0);
+<<<<<<< HEAD
       
+=======
+      // the planets own rotation
+>>>>>>> origin/master
       if (rotation < TWO_PI*2) {
         pushMatrix();
         rotateY(rotation);
@@ -45,6 +50,7 @@ class Planets {
       } else {
         rotation = 0;
       }
+      
       if (drawNames) {
         printName();
       }
@@ -63,17 +69,18 @@ class Planets {
     stroke(2);
     pushMatrix();
     rotateX(cameraRotations[0]);
-    rotateY(cameraRotations[1]);
     rotateY(-angle);
-    //rotateZ(cameraRotations[2]);
+    rotateY(cameraRotations[1]);
+    //rotateZ(map(cameraRotations[2], -TWO_PI, TWO_PI, 0, TWO_PI*2));
     translate(0, 0 - (radius + (radius * 0.4)));
-    textSize(30);
+    textSize(constrain(radius * 4, 5, 35));
     textAlign(CENTER);
     fill(255);
     text(name, 0, 0, 0);
     popMatrix();
     popStyle();
   }
+  
   void drawOrbit() {
     pushMatrix();
     pushStyle();
