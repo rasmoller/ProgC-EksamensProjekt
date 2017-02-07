@@ -1,3 +1,9 @@
+/*
+Notes:
+Orrery model of the solar system Heliocentric
+*/
+
+
 /* 
  Sources:
  https://en.wikipedia.org/wiki/Solar_System
@@ -6,33 +12,36 @@
 // library by Jonathan Feinberg - http://mrfeinberg.com/peasycam/
 import peasy.*;
 
+// My array of planets
 ArrayList<Planets> planets = new ArrayList<Planets>();
 
-// planets
+// Planets
 Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
 
-
-// textures
+// Textures
 PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh;
 
-
+// Classes
 PeasyCam cam;
-Menu menu;
+UI ui;
 
-//global Var
+// Global Variables
 float camMinimum = 200;
 float camMaximum = 10000;
 boolean drawNames = false;
 boolean drawOrbit = false;
 boolean tiltTrue = false;
 boolean debug = false;
+boolean startScreen = true;
+boolean showUI = true;
 float[] cameraRotations;
-float distanceScale = 700000;
 float debugDistance = 3000;
+int imageQual = 3;
+int imageQualTemp = imageQual;
 
 // Planet sizes
 float earthRadius = 6.378; // original størrelse = 6.378, noget km
-float sunRadius = earthRadius * 15; // eneste der ikke er akkurat og bruger jorden til at definere de andre
+float sunRadius = earthRadius * 13; // eneste der ikke er akkurat og bruger jorden til at definere de andre
 float mercuryRadius = earthRadius * 0.383;
 float venusRadius = earthRadius * 0.95;
 float marsRadius = earthRadius * 0.532;
@@ -41,10 +50,11 @@ float saturnRadius = earthRadius * 9;
 float uranusRadius = earthRadius * 4;
 float neptuneRadius = earthRadius * 3.86;
 
-// planet distance
+// Planet distance
 // AU = Astronomical Unit = 149,597,870,700 m ~ 149,597,870.7 km  https://en.wikipedia.org/wiki/Astronomical_unit
 // using their Semi-Major axis (the medium of their orbits)
 // Dividing AU with scale to make it fit the window
+float distanceScale = 660000;
 float AU = 149597870.7 / distanceScale;
 float mercuryDistance = AU * 0.387;
 float venusDistance = AU * 0.723;
@@ -55,7 +65,7 @@ float saturnDistance = AU * 10;
 float uranusDistance = AU * 20.1;
 float neptuneDistance = AU * 30.33;
 
-// planet inclination to Sun's equator in degrees (hvor meget den hælder til siden) (BRUG DET HER TIL HÆLDNING!!!)
+// Planets inclination to Sun's equator in degrees (hvor meget den hælder til siden) (BRUG DET HER TIL HÆLDNING!!!)
 float mercuryInclination = 3.38;
 float venusInclination = 3.86;
 float earthInclination = 7.155;
@@ -65,7 +75,7 @@ float saturnInclination = 5.51;
 float uranusInclination = 6.48;
 float neptuneInclination = 6.43;
 
-// orbit speed's ( earth's averag orbital speed = 29.78 km/s) (find more precise numbers!!)
+// Orbit speed ( earth's averag orbital speed = 29.78 km/s) (find more precise numbers!!)
 float mercurySpeed = 0.0075;
 float venusSpeed = 0.006;
 float earthSpeed = 0.005;
@@ -75,7 +85,7 @@ float saturnSpeed =  0.00165;
 float uranusSpeed = 0.00125;
 float neptuneSpeed = 0.001;
 
-// rotation speed's (find precise numbers!!)
+// Rotation speed (find precise numbers!!)
 float mercuryRotation = 0.005;
 float venusRotation = 0.005;
 float earthRotation = 0.05;
@@ -87,12 +97,13 @@ float neptuneRotation = 0.002;
 
 
 
-void setup() {
+void setup() 
+{
   fullScreen(P3D);
   //size(1920, 960, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
-  loadImages();
+  loadImages(imageQual);
 
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
@@ -124,77 +135,133 @@ void setup() {
   cam.setCenterDragHandler(null);
 
   // Menu initializing
-  menu = new Menu();
+  ui = new UI();
 }
 
-void draw() {
-  /*****Using its rotations to place name of planets*****/
+void draw() 
+{
+  
+  //Using its rotations to place name of planets
   cameraRotations = cam.getRotations();
   
-  /*********First resizing the background so it fits all resolutions then applying it**************/
+  //First resizing the background so it fits all resolutions then applying it
   background.resize(width, height);
   background(background);
-  /*****Menu for information about the planets*****/
-  menu.displayBox();
+  //Menu for information about the planets
+  ui.planetBox();
   
-  /*******Drawing sun before light cause otherwise the inside of the sun would light up*********/
+  // make you able to change image quality
+  if(imageQual != imageQualTemp)
+  {
+    loadImages(imageQual);
+    imageQualTemp = imageQual;
+  }
+  
+  //Drawing sun before light cause otherwise the inside of the sun would light up
   sun.display();
   
-  /*******Lights (r, g, b, x, y, z) it shines outwards********/
+  //Lights (r, g, b, x, y, z) it shines outwards
   pointLight(255, 255, 255, 0, 0, 0);
   
-  /*********Enhanced for loop to go through all planets created***********/
-  for (Planets planet : planets) {
+  //Enhanced for loop to go through all planets created
+  for (Planets planet : planets) 
+  {
     planet.display();
   }
 
-
-  
-  /********DEBUGGING*********/
+  //DEBUGGING
   if(debug){
   debug();
   }
 }
 
 void keyReleased() {
-  if (key == 't' || key == 'T') {
+  if (key == 't' || key == 'T') 
+  {
     drawNames = !drawNames;
   }
-  if (key == ' ') {
+  if (key == ' ') 
+  {
     cam.reset();
   }
-  if (key == 'f' || key == 'F') {
+  if (key == 'f' || key == 'F') 
+  {
     drawOrbit = !drawOrbit;
   }
-  if(key == '+' || key == '?'){
+  if(key == '+' || key == '?')
+  {
     debug = !debug;
   }
 }
 
-void loadImages() {
-  background = loadImage("background.jpg");
-  sunMesh = loadImage("sun_texture.jpg");
-  mercuryMesh = loadImage("mercury_texture.png");
-  venusMesh = loadImage("venus_texture.jpg");
-  earthMesh = loadImage("earth_texture.jpg");
-  marsMesh = loadImage("mars_texture.jpg");
-  jupiterMesh = loadImage("jupiter_texture.jpg");
-  saturnMesh = loadImage("saturn_texture.jpg");
-  uranusMesh = loadImage("uranus_texture.jpg");
-  neptuneMesh = loadImage("neptune_texture.jpg");
+
+// loads images with the fitting quality
+void loadImages(int imageQual) 
+{
+  
+  //Low - Standard
+  if(imageQual == 1)
+  {
+  background = loadImage("low/background.jpg");
+  sunMesh = loadImage("low/sun_texture.jpg");
+  mercuryMesh = loadImage("low/mercury_texture.png");
+  venusMesh = loadImage("low/venus_texture.jpg");
+  earthMesh = loadImage("low/earth_texture.jpg");
+  marsMesh = loadImage("low/mars_texture.jpg");
+  jupiterMesh = loadImage("low/jupiter_texture.jpg");
+  saturnMesh = loadImage("low/saturn_texture.jpg");
+  uranusMesh = loadImage("low/uranus_texture.jpg");
+  neptuneMesh = loadImage("low/neptune_texture.jpg");
+  }
+  
+  //Medium
+  if(imageQual == 2)
+  {
+  background = loadImage("medium/background.jpg");
+  sunMesh = loadImage("medium/sun_texture.jpg");
+  mercuryMesh = loadImage("medium/mercury_texture.png");
+  venusMesh = loadImage("medium/venus_texture.jpg");
+  earthMesh = loadImage("medium/earth_texture.jpg");
+  marsMesh = loadImage("medium/mars_texture.jpg");
+  jupiterMesh = loadImage("medium/jupiter_texture.jpg");
+  saturnMesh = loadImage("medium/saturn_texture.jpg");
+  uranusMesh = loadImage("medium/uranus_texture.jpg");
+  neptuneMesh = loadImage("medium/neptune_texture.jpg");
+  }
+  
+  //High
+  if(imageQual == 3)
+  {
+  background = loadImage("high/background.jpg");
+  sunMesh = loadImage("high/sun_texture.jpg");
+  mercuryMesh = loadImage("high/mercury_texture.png");
+  venusMesh = loadImage("high/venus_texture.jpg");
+  earthMesh = loadImage("high/earth_texture.jpg");
+  marsMesh = loadImage("high/mars_texture.jpg");
+  jupiterMesh = loadImage("high/jupiter_texture.jpg");
+  saturnMesh = loadImage("high/saturn_texture.jpg");
+  uranusMesh = loadImage("high/uranus_texture.jpg");
+  neptuneMesh = loadImage("high/neptune_texture.jpg");
+  }
 }
 
 
-void debug() {
+void debug() 
+{
   pushStyle();
   stroke(200);
+  //X-axis
   line(0, 0, 0, debugDistance, 0, 0);
-  line(0, 0, 0, 0, debugDistance, 0);
-  line(0, 0, 0, 0, 0, debugDistance);
   line(0, 0, 0, -debugDistance, 0, 0);
+  //Y-axis
+  line(0, 0, 0, 0, debugDistance, 0);
   line(0, 0, 0, 0, -debugDistance, 0);
+  //Z-axis
+  line(0, 0, 0, 0, 0, debugDistance);
   line(0, 0, 0, 0, 0, -debugDistance);
   popStyle();
+  
+  //Information about how the program is running and the camera
   println(frameRate);
   println(cam.getDistance());
   println(cameraRotations);

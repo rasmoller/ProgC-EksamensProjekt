@@ -1,4 +1,5 @@
-class Planets {
+class Planets 
+{
   float radius, orbitSpeed, rotationSpeed, distance;
   String name;
   PImage texture;
@@ -9,7 +10,8 @@ class Planets {
   float inclination;
 
 
-  Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle, float inclination) {
+  Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle, float inclination) 
+  {
     this.texture = texture;
     this.orbitSpeed = orbitSpeed;
     this.rotationSpeed = rotationSpeed;
@@ -20,50 +22,60 @@ class Planets {
     this.inclination = inclination;
   }
 
-  void moons(String name, float size, float distance) {
+  void moons(String name, float size, float distance) 
+  {
   }
 
-  void display() {
+  void display() 
+  {
     // find a way to make speed a multiplier for angle
     // the angle of the orbit
     if (angle < TWO_PI*2) {
       pushMatrix();
       beginShape();
       noStroke();
-      //fill(c);
       planet = createShape(SPHERE, radius);
       planet.setTexture(texture);
       endShape();
       rotateY(angle);
       translate(distance, 0);
       // the planets own rotation
-      if (rotation < TWO_PI*2) {
+      if (rotation < TWO_PI*2) 
+      {
         pushMatrix();
         rotateY(rotation);
         shape(planet, 0, 0);
         popMatrix();
         rotation += rotationSpeed;
-      } else {
+      } else 
+      {
         rotation = 0;
       }
-      
-      if (drawNames) {
+      //drawing the planets name
+      if (drawNames) 
+      {
         printName();
       }
+      //drawing a planets moon(s)
+      //moons();
       popMatrix();
       angle+= orbitSpeed;
-    } else {
+    } else 
+    {
       angle = 0;
     }
-    if (drawOrbit) {
+    if (drawOrbit) 
+    {
       drawOrbit();
     }
   }
 
-  void printName() {
+  void printName() 
+  {
     pushStyle();
     stroke(2);
     pushMatrix();
+    //rotates the names
     rotateX(cameraRotations[0]);
     rotateY(-angle);
     rotateY(cameraRotations[1]);
@@ -77,7 +89,8 @@ class Planets {
     popStyle();
   }
   
-  void drawOrbit() {
+  void drawOrbit() 
+  {
     pushMatrix();
     pushStyle();
     rotateX(PI/2);
