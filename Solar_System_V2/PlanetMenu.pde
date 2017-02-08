@@ -31,6 +31,7 @@ class UI
   }
   void startScreen()
   {
+    disableCam();
     
   }
   // choose what planet you want to look at

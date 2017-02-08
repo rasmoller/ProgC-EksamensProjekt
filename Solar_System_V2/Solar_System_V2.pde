@@ -1,10 +1,10 @@
 /*
   Notes:
-  Orrery model of the solar system Heliocentric 
-  Sources:
-  https://en.wikipedia.org/wiki/Solar_System
-  http://mrfeinberg.com/peasycam/
-*/
+ Orrery model of the solar system Heliocentric 
+ Sources:
+ https://en.wikipedia.org/wiki/Solar_System
+ http://mrfeinberg.com/peasycam/
+ */
 // library by Jonathan Feinberg - http://mrfeinberg.com/peasycam/
 import peasy.*;
 
@@ -54,63 +54,65 @@ void draw()
 {
   //Using its rotations to place name of planets
   cameraRotations = cam.getRotations();
-  
+
   //First resizing the background so it fits all resolutions then applying it
   background.resize(width, height);
   background(background);
-  
+
   // make you able to change image quality
-  if(imageQual != imageQualTemp)
+  if (imageQual != imageQualTemp)
   {
     loadImages(imageQual);
     imageQualTemp = imageQual;
   }
-  
+
   //Drawing sun before light cause otherwise the inside of the sun would light up
   sun.display();
-  
+
   //Lights (r, g, b, x, y, z) it shines outwards
   pointLight(255, 255, 255, 0, 0, 0);
-  
+
   //Enhanced for loop to go through all planets created
   for (Planets planet : planets) 
   {
     planet.display();
   }
-  
+
   //Menu for information about the planets
   ui.controller(startScreen, showUI);
 
   //DEBUGGING
-  if(debug)
+  if (debug)
   {
-  debug();
+    debug();
   }
 }
 
 void keyReleased() 
 {
-  if (key == 't' || key == 'T') 
-  {
-    drawNames = !drawNames;
-  }
-  if (key == ' ') 
-  {
-    cam.reset();
-  }
-  if (key == 'f' || key == 'F') 
-  {
-    drawOrbit = !drawOrbit;
-  }
-  if(key == '+' || key == '?')
-  {
-    debug = !debug;
+  if (!startScreen) {
+    if (key == 't' || key == 'T') 
+    {
+      drawNames = !drawNames;
+    }
+    if (key == ' ') 
+    {
+      cam.reset();
+    }
+    if (key == 'f' || key == 'F') 
+    {
+      drawOrbit = !drawOrbit;
+    }
+    if (key == '+' || key == '?')
+    {
+      debug = !debug;
+    }
   }
 }
 void mousePressed()
 {
-  if(mouseX > 0 && mouseX < width/19.5 && mouseY > height-height/15)
+  if (mouseX > 0 && mouseX < width/19.5 && mouseY > height-height/15)
   {
-   settingsBox = !settingsBox;
+    settingsBox = !settingsBox;
   }
 }

@@ -72,12 +72,9 @@ void debug()
   println(cameraRotations);
 }
 void disableCam(){
-
-
+cam.setActive(false);
 }
 
 void enableCam(){
-
-
-
+cam.setActive(true);
 }
