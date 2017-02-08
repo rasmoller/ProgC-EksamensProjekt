@@ -3,7 +3,6 @@ Notes:
 Orrery model of the solar system Heliocentric
 */
 
-
 /* 
  Sources:
  https://en.wikipedia.org/wiki/Solar_System
@@ -100,7 +99,7 @@ float neptuneRotation = 0.002;
 void setup() 
 {
   fullScreen(P3D);
-  //size(1920, 960, P3D);
+  //size(900, 700, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
@@ -148,7 +147,7 @@ void draw()
   background.resize(width, height);
   background(background);
   //Menu for information about the planets
-  ui.planetBox();
+  ui.controller(startScreen, showUI);
   
   // make you able to change image quality
   if(imageQual != imageQualTemp)
