@@ -75,11 +75,11 @@ class Planets
     pushStyle();
     stroke(2);
     pushMatrix();
-    //rotates the names
+    //rotates the names with camera rotations
     rotateX(cameraRotations[0]);
-    rotateY(-angle);
+    //rotateY(-angle);
     rotateY(cameraRotations[1]);
-    //rotateZ(map(cameraRotations[2], -TWO_PI, TWO_PI, 0, TWO_PI*2));
+    rotateZ(cameraRotations[2]);
     translate(0, 0 - (radius + (radius * 0.4)));
     textSize(constrain(radius * 4, 5, 35));
     textAlign(CENTER);

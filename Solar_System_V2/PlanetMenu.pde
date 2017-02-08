@@ -1,70 +1,88 @@
 class UI 
 {
 
-  UI()
-  {
-  }
-
   void controller(boolean startScreen, boolean showUI)
   {
     // "makes it 2D" draw things that you want relative to the camera's position and orientation
     cam.beginHUD();
+    pushStyle();
+    // design of HUD
+    strokeJoin(ROUND);
+    strokeWeight(3);
+    stroke(20);
+    fill(10);
     if (startScreen)
     {
       startScreen();
-    } 
-    else
+    } else
     {
       if (showUI)
       {
         if (settingsBox)
         {
           settingsBox();
+          escSettingsBox();
         } else
         {
-          planetBox();
+          planetSelect();
           settingsButton();
         }
       }
     }
+    popStyle();
     cam.endHUD();
   }
+  // the welcome menu
   void startScreen()
   {
     disableCam();
-    
+    rect(startScreenX, startScreenY, startScreenWidth, startScreenHeight);
+    startButton();
   }
-  // choose what planet you want to look at
-  void planetBox() 
+  // the button to start the simulation
+  void startButton() 
   {
     pushStyle();
-    fill(10);
-    strokeJoin(ROUND);
-    strokeWeight(3);
-    stroke(20);
-    rect(0, 0, width/8, height/4);
+    if (hover(startButtonX, startButtonY, startButtonWidth, startButtonHeight)) {
+      fill(255);
+    } else 
+    {
+      fill(60);
+    }
+    rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
     popStyle();
   }
 
+  // choose what planet you want to look at (yet to get implemented)
+  void planetSelect() 
+  {
+    rect(0, 0, width/8, height/4);
+  }
+  
+  // the settings menu
   void settingsBox()
   {
-    pushStyle();
-    fill(10);
-    strokeJoin(ROUND);
-    strokeWeight(3);
-    stroke(20);
-    rect(width/5, height/5, width/1.5, height/2);
-    popStyle();
+    rect(settingsBoxX, settingsBoxY, settingsBoxWidth, settingsBoxHeight);
   }
+  
+  // used for closing the settings
+  void escSettingsBox()
+  {
+    rect(escSettingsBoxX, escSettingsBoxY, escSettingsBoxWidth, escSettingsBoxHeight);
+    image(escape, escSettingsBoxX, escSettingsBoxY, escSettingsBoxWidth, escSettingsBoxHeight);
+  }
+  
+  // used for getting into the settings
   void settingsButton()
   {
+    if(hover(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight)){
     pushStyle();
-    fill(10);
-    strokeJoin(ROUND);
-    strokeWeight(3);
-    stroke(20);
-    rect(0, height-height/15, width/19.5, height);
+    fill(60);
+    rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
     popStyle();
-    image(settingsButton, 0, height-height/15, width/19.5, height/15);
+    }else{
+    rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
+    }
+    image(settingsButton, settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
   }
 }

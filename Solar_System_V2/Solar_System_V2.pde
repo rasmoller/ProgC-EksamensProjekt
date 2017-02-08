@@ -11,10 +11,11 @@ import peasy.*;
 void setup() 
 {
   fullScreen(P3D);
-  //size(900, 700, P3D);
+  //size(1900, 1000, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
+  loadSizes();
 
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
@@ -78,14 +79,13 @@ void draw()
     planet.display();
   }
 
-  //Menu for information about the planets
-  ui.controller(startScreen, showUI);
-
   //DEBUGGING
   if (debug)
   {
     debug();
   }
+  //Menu for information about the planets
+  ui.controller(startScreen, showUI);
 }
 
 void keyReleased() 
@@ -107,12 +107,30 @@ void keyReleased()
     {
       debug = !debug;
     }
+    if (key == 'z' || key == 'Z')
+    {
+      showUI = !showUI;
+    }
   }
 }
 void mousePressed()
 {
-  if (mouseX > 0 && mouseX < width/19.5 && mouseY > height-height/15)
+  if (showUI)
   {
-    settingsBox = !settingsBox;
+    if (mouseX > settingsButtonX && mouseX < settingsButtonX + settingsButtonWidth && mouseY > settingsButtonY)
+    {
+      settingsBox = !settingsBox;
+    }
+    if(settingsBox){
+      if(mouseX > escSettingsBoxX && mouseX < escSettingsBoxX + escSettingsBoxWidth && mouseY > escSettingsBoxY){
+      settingsBox = !settingsBox;
+      }
+    }
+  }
+
+  if (startScreen && mouseX > startButtonX && mouseX < startButtonX + startButtonWidth && mouseY > startButtonY && mouseY < startButtonY + startButtonHeight)
+  {
+    startScreen = !startScreen;
+    enableCam();
   }
 }

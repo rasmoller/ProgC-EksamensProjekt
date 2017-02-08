@@ -49,6 +49,7 @@ void loadImages(int imageQual)
   
   //Utility
   settingsButton = loadImage("utility/SettingsButton.png");
+  escape = loadImage("utility/EscapeButton.png");
 }
 
 void debug() 
@@ -71,10 +72,22 @@ void debug()
   println(cam.getDistance());
   println(cameraRotations);
 }
-void disableCam(){
+// homemade functions for enabling and disabling the camera
+void disableCam()
+{
 cam.setActive(false);
 }
-
-void enableCam(){
+void enableCam()
+{
 cam.setActive(true);
+}
+
+boolean hover(float x1, float y1, float x2, float y2){
+  if(mouseX > x1 && mouseX < x2 + x1 && mouseY > y1 && mouseY < y2 + y1)
+  {
+  return true;
+  }
+  else{
+  return false;
+  }
 }
