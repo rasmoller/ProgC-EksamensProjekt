@@ -37,10 +37,6 @@ class UI
   {
     disableCam();
     rect(startScreenX, startScreenY, startScreenWidth, startScreenHeight);
-    pushStyle();
-    fill(255);
-    text("Welcome to a simulation of our solar system",startScreenX, startScreenY, startScreenWidth, startScreenHeight-startButtonHeight);
-    popStyle();
     startButton();
   }
   // the button to start the simulation
@@ -48,16 +44,12 @@ class UI
   {
     pushStyle();
     if (hover(startButtonX, startButtonY, startButtonWidth, startButtonHeight)) {
-      fill(180);
+      fill(255);
     } else 
     {
-      fill(90);
+      fill(60);
     }
     rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
-    pushStyle();
-    fill(255);
-    text("Press this button to start the simulation!",startButtonX, startButtonY, startButtonWidth, startButtonHeight);
-    popStyle();
     popStyle();
   }
 
