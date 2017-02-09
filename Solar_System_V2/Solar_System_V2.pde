@@ -10,8 +10,8 @@ import peasy.*;
 
 void setup() 
 {
-  fullScreen(P3D);
-  //size(900, 600, P3D);
+  //fullScreen(P3D);
+  size(900, 600, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
