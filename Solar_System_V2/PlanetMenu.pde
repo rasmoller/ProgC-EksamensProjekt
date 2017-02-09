@@ -5,12 +5,16 @@ class UI
   {
     // "makes it 2D" draw things that you want relative to the camera's position and orientation
     cam.beginHUD();
+    // I draw this because otherwise the menu will be affected by the light
+    noLights();
     pushStyle();
     // design of HUD
     strokeJoin(ROUND);
     strokeWeight(3);
     stroke(20);
     fill(10);
+    textAlign(CENTER, CENTER);
+    textSize(30);
     if (startScreen)
     {
       startScreen();

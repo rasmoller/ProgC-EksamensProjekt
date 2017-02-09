@@ -1,6 +1,4 @@
 /*
-  Notes:
- Orrery model of the solar system Heliocentric 
  Sources:
  https://en.wikipedia.org/wiki/Solar_System
  http://mrfeinberg.com/peasycam/
@@ -10,24 +8,24 @@ import peasy.*;
 
 void setup() 
 {
-  //fullScreen(P3D);
-  size(900, 600, P3D);
-  frameRate(60);
+  fullScreen(P3D);
+  //size(500, 500, P3D);
+  frameRate(144);
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
   loadSizes();
 
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
-  sun = new Planets("Sun", sunRadius, 0, sunMesh, 0, 0, 0, 0);
-  mercury = new Planets("Mercury", mercuryRadius, mercuryDistance, mercuryMesh, mercurySpeed, mercuryRotation, 0, mercuryInclination);
-  venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, 0, venusInclination);
-  earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, 0, earthInclination);
-  mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, 0, marsInclination);
-  jupiter = new Planets("Jupiter", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, 0, jupiterInclination);
-  saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, 0, saturnInclination);
-  uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, 0, uranusInclination);
-  neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, 0, neptuneInclination);
+  sun = new Planets("Sun", sunRadius, 0, sunMesh, 0, 0, 0, 0, scaling);
+  mercury = new Planets("Mercury", mercuryRadius, mercuryDistance, mercuryMesh, mercurySpeed, mercuryRotation, random(0,TWO_PI), mercuryInclination, scaling);
+  venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, random(0,TWO_PI), venusInclination, scaling);
+  earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, random(0,TWO_PI), earthInclination, scaling);
+  mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, random(0,TWO_PI), marsInclination, scaling);
+  jupiter = new Planets("Jupiter", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, random(0,TWO_PI), jupiterInclination, scaling);
+  saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, random(0,TWO_PI), saturnInclination, scaling);
+  uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, random(0,TWO_PI), uranusInclination, scaling);
+  neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, random(0,TWO_PI), neptuneInclination, scaling);
 
   // adding objects to arraylist (im excluding the sun to make lighting works)
   planets.add(mercury);
@@ -40,7 +38,7 @@ void setup()
   planets.add(neptune);
 
   // using peasycam library to get a controlled camera
-  cam = new PeasyCam(this, 750);
+  cam = new PeasyCam(this, 500);
   cam.setMinimumDistance(camMinimum);
   cam.setMaximumDistance(camMaximum);
   cam.setSuppressRollRotationMode();
