@@ -10,8 +10,8 @@ import peasy.*;
 
 void setup() 
 {
-  fullScreen(P3D);
-  //size(1900, 1000, P3D);
+  //fullScreen(P3D);
+  size(900, 600, P3D);
   frameRate(60);
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
@@ -119,11 +119,13 @@ void mousePressed()
   {
     if (mouseX > settingsButtonX && mouseX < settingsButtonX + settingsButtonWidth && mouseY > settingsButtonY)
     {
+      disableCam();
       settingsBox = !settingsBox;
     }
     if(settingsBox){
       if(mouseX > escSettingsBoxX && mouseX < escSettingsBoxX + escSettingsBoxWidth && mouseY > escSettingsBoxY){
       settingsBox = !settingsBox;
+      enableCam();
       }
     }
   }

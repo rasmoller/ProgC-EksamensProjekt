@@ -81,7 +81,7 @@ class Planets
     rotateY(cameraRotations[1]);
     rotateZ(cameraRotations[2]);
     translate(0, 0 - (radius + (radius * 0.4)));
-    textSize(constrain(radius * 4, 5, 35));
+    textSize(constrain(radius * 4, 5, 40));
     textAlign(CENTER);
     fill(255);
     text(name, 0, 0, 0);
