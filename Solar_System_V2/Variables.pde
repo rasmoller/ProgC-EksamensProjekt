@@ -25,3 +25,4 @@ float[] cameraRotations;
 float debugDistance = 3000;
 int imageQual = 3;
 int imageQualTemp = imageQual;
+float scaling = 0;
