@@ -48,10 +48,10 @@ class Planets
         pushMatrix();
         rotateY(rotation);
         shape(planet, 0, 0);
-        if (drawRings)
-        {
+        //if (drawRings)
+        //{
           drawRings();
-        }
+        //}
         popMatrix();
         rotation += rotationSpeed;
       } else 
