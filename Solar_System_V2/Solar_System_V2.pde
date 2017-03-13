@@ -18,14 +18,14 @@ void setup()
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
   sun = new Planets("Sun", sunRadius, 0, sunMesh, 0, 0, 0, 0, scaling);
-  mercury = new Planets("Mercury", mercuryRadius, mercuryDistance, mercuryMesh, mercurySpeed, mercuryRotation, random(0,TWO_PI), mercuryInclination, scaling);
-  venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, random(0,TWO_PI), venusInclination, scaling);
-  earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, random(0,TWO_PI), earthInclination, scaling);
-  mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, random(0,TWO_PI), marsInclination, scaling);
-  jupiter = new Planets("Jupiter", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, random(0,TWO_PI), jupiterInclination, scaling);
-  saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, random(0,TWO_PI), saturnInclination, scaling);
-  uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, random(0,TWO_PI), uranusInclination, scaling);
-  neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, random(0,TWO_PI), neptuneInclination, scaling);
+  mercury = new Planets("Mercury", mercuryRadius, mercuryDistance, mercuryMesh, mercurySpeed, mercuryRotation, random(0, TWO_PI), mercuryInclination, scaling);
+  venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, random(0, TWO_PI), venusInclination, scaling);
+  earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, random(0, TWO_PI), earthInclination, scaling);
+  mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, random(0, TWO_PI), marsInclination, scaling);
+  jupiter = new Planets("Jupiter", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, random(0, TWO_PI), jupiterInclination, scaling);
+  saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, random(0, TWO_PI), saturnInclination, scaling);
+  uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, random(0, TWO_PI), uranusInclination, scaling);
+  neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, random(0, TWO_PI), neptuneInclination, scaling);
 
   // adding objects to arraylist (im excluding the sun to make lighting works)
   planets.add(mercury);
@@ -115,15 +115,17 @@ void mousePressed()
 {
   if (showUI)
   {
-    if (mouseX > settingsButtonX && mouseX < settingsButtonX + settingsButtonWidth && mouseY > settingsButtonY)
-    {
-      disableCam();
-      settingsBox = !settingsBox;
+    if (!settingsBox) {
+      if (mouseX > settingsButtonX && mouseX < settingsButtonX + settingsButtonWidth && mouseY > settingsButtonY)
+      {
+        disableCam();
+        settingsBox = !settingsBox;
+      }
     }
-    if(settingsBox){
-      if(mouseX > escSettingsBoxX && mouseX < escSettingsBoxX + escSettingsBoxWidth && mouseY > escSettingsBoxY){
-      settingsBox = !settingsBox;
-      enableCam();
+    if (settingsBox) {
+      if (mouseX > escSettingsBoxX && mouseX < escSettingsBoxX + escSettingsBoxWidth && mouseY > escSettingsBoxY) {
+        settingsBox = !settingsBox;
+        enableCam();
       }
     }
   }
@@ -132,5 +134,6 @@ void mousePressed()
   {
     startScreen = !startScreen;
     enableCam();
+    
   }
 }

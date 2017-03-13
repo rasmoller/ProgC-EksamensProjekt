@@ -22,6 +22,7 @@ class Planets
     this.radius = radius;
     this.angle = 0 + startAngle;
     this.inclination = inclination;
+    
   }
 
   void moons(String name, float size, float distance) 
@@ -36,6 +37,7 @@ class Planets
       pushMatrix();
       beginShape();
       noStroke();
+      
       planet = createShape(SPHERE, radius);
       planet.setTexture(texture);
       endShape();
