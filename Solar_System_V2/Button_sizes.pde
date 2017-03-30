@@ -18,11 +18,11 @@
   float settingsBoxY;
   float settingsBoxWidth;
   float settingsBoxHeight;
-    //close settingsBox
-    float escSettingsBoxX;
-    float escSettingsBoxY;
-    float escSettingsBoxWidth;
-    float escSettingsBoxHeight;
+  //close settingsBox
+  float escSettingsBoxX;
+  float escSettingsBoxY;
+  float escSettingsBoxWidth;
+  float escSettingsBoxHeight;
   
   void loadSizes(){
   //startScreen
@@ -45,9 +45,9 @@
   settingsBoxY = height/5;
   settingsBoxWidth = width - settingsBoxX*2;
   settingsBoxHeight = height - settingsBoxY*2;
-    // close settingsBox
-    escSettingsBoxWidth = settingsBoxWidth/13;
-    escSettingsBoxHeight = escSettingsBoxWidth;
-    escSettingsBoxX = (settingsBoxX + settingsBoxWidth) - escSettingsBoxWidth;
-    escSettingsBoxY = settingsBoxY;
+  // close settingsBox
+  escSettingsBoxWidth = settingsBoxWidth/13;
+  escSettingsBoxHeight = escSettingsBoxWidth;
+  escSettingsBoxX = (settingsBoxX + settingsBoxWidth) - escSettingsBoxWidth;
+  escSettingsBoxY = settingsBoxY;
   }
