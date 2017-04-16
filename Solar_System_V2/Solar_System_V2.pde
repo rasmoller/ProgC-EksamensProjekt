@@ -74,6 +74,7 @@ void draw()
    //Enhanced for loop to go through all planets created
    for (Planets planet : planets) 
    {
+      
       planet.display();
    }
 
@@ -104,10 +105,17 @@ void keyReleased()
       if (key == '+' || key == '?')
       {
          debug = !debug;
+         if (debug == false && showUI == false) {
+            showUI = true;
+         }
       }
       if (key == 'z' || key == 'Z')
       {
-         showUI = !showUI;
+         if (debug==true) {
+            showUI = !showUI;
+         } else {
+            showUI = true;
+         }
       }
    }
 }

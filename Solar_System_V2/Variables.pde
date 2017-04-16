@@ -25,4 +25,14 @@ float[] cameraRotations;
 float debugDistance = 3000;
 int imageQual = 3;
 int imageQualTemp = imageQual;
-float scaling = 0;
+float scaling = 1;
+float orbitThickness = 1;
+
+
+// Text Settings
+int titleSize = 55;
+int generalTextSize = 30;
+
+// Text Placeholders
+String title = "Welcome to our solar system";
+String mainText = "In this simulation of the universe, you have the ability to look around our local solar system and see the orbits of the planets";

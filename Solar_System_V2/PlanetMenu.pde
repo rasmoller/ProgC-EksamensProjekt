@@ -14,7 +14,7 @@ class UI
     stroke(20);
     fill(10);
     textAlign(CENTER, CENTER);
-    textSize(30);
+    textSize(generalTextSize);
     if (startScreen)
     {
       startScreen();
@@ -43,7 +43,13 @@ class UI
     rect(startScreenX, startScreenY, startScreenWidth, startScreenHeight);
     pushStyle();
     fill(255);
-    text("Welcome to a simulation of our solar system",startScreenX, startScreenY, startScreenWidth, startScreenHeight-startButtonHeight);
+    //Title
+    pushStyle();
+    textSize(titleSize);
+    text(title,startScreenX, startScreenY, startScreenWidth, startButtonHeight);
+    popStyle();
+    //Main text
+    text(mainText, startScreenX, startScreenY, startScreenWidth, startScreenHeight-startButtonHeight);
     popStyle();
     startButton();
   }
