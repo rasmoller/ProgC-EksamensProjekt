@@ -78,12 +78,12 @@ class UI
   // choose what planet you want to look at (yet to get implemented)
   void planetSelect() 
   {
-    rect(0, 0, width/8, height/4);
+    rect(0, 0, planetSelectWidth, planetSelectHeight);
     for(int x=0;x<planets.size();x++){
     pushStyle();
     fill(255);
-    textAlign(LEFT,TOP);
-    text(planets.get(x).getPlanetName(),10,((height/4)/planets.size())*x,width/8, height/4) ;
+    textAlign(CENTER,TOP);
+    text(planets.get(x).getPlanetName(),0,((height/4)/planets.size())*x,planetSelectWidth, planetSelectHeight) ;
     popStyle();
     }
   }

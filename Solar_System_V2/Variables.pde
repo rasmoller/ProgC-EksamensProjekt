@@ -37,5 +37,5 @@ int generalTextSize = 30;
 
 // Text Placeholders
 String title = "Welcome to our local solar system!";
-String mainText = "In this simulation of the universe, you have the ability to look around our local solar system and see the orbits of the planets.\nTo toggle different information about the planets use the following buttons:\nOrbits = F\nNames = T\nTo look around just drag with the mouse and zoom with the mousewheel.";
+String mainText = "In this simulation of the universe, you have the ability to look around our local solar system and see the orbits of the planets.\nTo toggle different information about the planets use the following buttons:\nOrbits = F\nNames = T\nReset camera = Spacebar\nTo look around just drag with the mouse and zoom with the mousewheel.";
 String startButtonText = "Press this button to start the simulation!";
