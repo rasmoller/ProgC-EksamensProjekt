@@ -8,12 +8,10 @@ class Planets
    float angle;
    float rotation = 0;
    float inclination;
-   float scaling;
 
 
-   Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle, float inclination, float scaling) 
+   Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle, float inclination) 
    {
-      this.scaling = scaling;
       this.texture = texture;
       this.orbitSpeed = orbitSpeed * scaling;
       this.rotationSpeed = rotationSpeed * scaling;
@@ -28,7 +26,7 @@ class Planets
    {
    }
 
-   void display() 
+   void display(float scaling) 
    {
       // find a way to make speed a multiplier for angle
       // the angle of the orbit
