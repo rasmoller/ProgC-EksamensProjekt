@@ -4,6 +4,7 @@ ArrayList<Planets> planets = new ArrayList<Planets>();
 // Planets
 Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
 slider scalingSlider;
+int activePlanet;
 
 // Textures
 PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh, settingsButton, escape;

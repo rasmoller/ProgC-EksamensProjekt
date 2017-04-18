@@ -79,6 +79,13 @@ class UI
   void planetSelect() 
   {
     rect(0, 0, width/8, height/4);
+    for(int x=0;x<planets.size();x++){
+    pushStyle();
+    fill(255);
+    textAlign(LEFT,TOP);
+    text(planets.get(x).getPlanetName(),10,((height/4)/planets.size())*x,width/8, height/4) ;
+    popStyle();
+    }
   }
   
   // the settings menu
