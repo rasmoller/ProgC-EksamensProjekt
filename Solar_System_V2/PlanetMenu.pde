@@ -1,6 +1,6 @@
 class UI 
 {
-
+   PFont standardFont;
   void controller(boolean startScreen, boolean showUI)
   {
     // "makes it 2D" draw things that you want relative to the camera's position and orientation
@@ -10,6 +10,8 @@ class UI
     pushStyle();
     // design of HUD
     strokeJoin(ROUND);
+    standardFont = createFont("Carlito-48.vwl", 50, true);
+    textFont(standardFont);
     strokeWeight(3);
     stroke(20);
     fill(10);
@@ -46,10 +48,11 @@ class UI
     //Title
     pushStyle();
     textSize(titleSize);
+    textAlign(CENTER,CENTER);
     text(title,startScreenX, startScreenY, startScreenWidth, startButtonHeight);
     popStyle();
     //Main text
-    text(mainText, startScreenX, startScreenY, startScreenWidth, startScreenHeight-startButtonHeight);
+    text(mainText, startScreenX, startScreenY+startButtonHeight/3, startScreenWidth, startScreenHeight-startButtonHeight);
     popStyle();
     startButton();
   }
@@ -66,7 +69,8 @@ class UI
     rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
     pushStyle();
     fill(255);
-    text("Press this button to start the simulation!",startButtonX, startButtonY, startButtonWidth, startButtonHeight);
+    //Start button
+    text(startButtonText,startButtonX, startButtonY, startButtonWidth, startButtonHeight);
     popStyle();
     popStyle();
   }
