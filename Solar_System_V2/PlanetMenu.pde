@@ -25,7 +25,6 @@ class UI
         if (settingsBox)
         {
           settingsBox();
-          escSettingsBox();
         } else
         {
           planetSelect();
@@ -46,7 +45,7 @@ class UI
     //Title
     pushStyle();
     textSize(titleSize);
-    text(title,startScreenX, startScreenY, startScreenWidth, startButtonHeight);
+    text(title, startScreenX, startScreenY, startScreenWidth, startButtonHeight);
     popStyle();
     //Main text
     text(mainText, startScreenX, startScreenY, startScreenWidth, startScreenHeight-startButtonHeight);
@@ -66,7 +65,7 @@ class UI
     rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
     pushStyle();
     fill(255);
-    text("Press this button to start the simulation!",startButtonX, startButtonY, startButtonWidth, startButtonHeight);
+    text("Press this button to start the simulation!", startButtonX, startButtonY, startButtonWidth, startButtonHeight);
     popStyle();
     popStyle();
   }
@@ -76,34 +75,55 @@ class UI
   {
     rect(0, 0, width/8, height/4);
   }
-  
+
   // the settings menu
   void settingsBox()
   {
     rect(settingsBoxX, settingsBoxY, settingsBoxWidth, settingsBoxHeight);
+    escSettingsBox();
+    pictureSettings();
   }
-  
+
   // used for closing the settings
   void escSettingsBox()
   {
     rect(escSettingsBoxX, escSettingsBoxY, escSettingsBoxWidth, escSettingsBoxHeight);
     image(escape, escSettingsBoxX, escSettingsBoxY, escSettingsBoxWidth, escSettingsBoxHeight);
   }
-  
+
   // used for getting into the settings
   void settingsButton()
   {
-    if(hover(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight)){
-    pushStyle();
-    fill(60);
-    rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
-    popStyle();
-    }else{
-    rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
+    if (hover(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight)) {
+      pushStyle();
+      fill(60);
+      rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
+      popStyle();
+    } else {
+      rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
     }
     pushStyle();
     fill(255);
     image(settingsButton, settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
     popStyle();
+  }
+  void pictureSettings() {
+    for (int x = 0; x < 3; x++) {
+      rect(settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3);
+      pushStyle();
+      fill(255);
+      switch(x) {
+      case 0:
+        text("low",settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3);
+        break;
+      case 1:
+        text("medium",settingsBoxX + (settingsBoxWidth/4)*3,settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6,settingsBoxHeight/3);
+        break;
+      case 2:
+        text("high",settingsBoxX + (settingsBoxWidth/4)*3,settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6,settingsBoxHeight/3);
+        break;
+      }
+      popStyle();
+    }
   }
 }
