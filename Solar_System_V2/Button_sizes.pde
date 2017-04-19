@@ -23,6 +23,9 @@
   float escSettingsBoxY;
   float escSettingsBoxWidth;
   float escSettingsBoxHeight;
+  //Planet select
+  float planetSelectWidth;
+  float planetSelectHeight;
   
   void loadSizes(){
   //startScreen
@@ -50,4 +53,7 @@
   escSettingsBoxHeight = escSettingsBoxWidth;
   escSettingsBoxX = (settingsBoxX + settingsBoxWidth) - escSettingsBoxWidth;
   escSettingsBoxY = settingsBoxY;
+  //planet select
+  planetSelectWidth = width/10;
+  planetSelectHeight = height/4;
   }

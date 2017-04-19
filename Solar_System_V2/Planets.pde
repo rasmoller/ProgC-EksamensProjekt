@@ -115,4 +115,13 @@ class Planets
    }
    void drawRings() {
    }
+   String getPlanetName(){
+   return name;
+   }
+   float getAngle(){
+   return angle;
+   }
+   float getDistance(){
+   return distance;
+   }
 }

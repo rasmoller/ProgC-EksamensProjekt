@@ -1,6 +1,6 @@
 class UI 
 {
-
+   PFont standardFont;
   void controller(boolean startScreen, boolean showUI)
   {
     // "makes it 2D" draw things that you want relative to the camera's position and orientation
@@ -10,6 +10,8 @@ class UI
     pushStyle();
     // design of HUD
     strokeJoin(ROUND);
+    standardFont = createFont("Carlito-48.vwl", 50, true);
+    textFont(standardFont);
     strokeWeight(3);
     stroke(20);
     fill(10);
@@ -46,9 +48,10 @@ class UI
     pushStyle();
     textSize(titleSize);
     text(title, startScreenX, startScreenY, startScreenWidth, startButtonHeight);
+    textAlign(CENTER,CENTER);
     popStyle();
     //Main text
-    text(mainText, startScreenX, startScreenY, startScreenWidth, startScreenHeight-startButtonHeight);
+    text(mainText, startScreenX, startScreenY+startButtonHeight/3, startScreenWidth, startScreenHeight-startButtonHeight);
     popStyle();
     startButton();
   }
@@ -63,17 +66,25 @@ class UI
       fill(90);
     }
     rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
+    popStyle();
     pushStyle();
     fill(255);
-    text("Press this button to start the simulation!", startButtonX, startButtonY, startButtonWidth, startButtonHeight);
-    popStyle();
+    //Start button
+    text(startButtonText,startButtonX, startButtonY, startButtonWidth, startButtonHeight);
     popStyle();
   }
 
   // choose what planet you want to look at (yet to get implemented)
   void planetSelect() 
   {
-    rect(0, 0, width/8, height/4);
+    rect(0, 0, planetSelectWidth, planetSelectHeight);
+    for(int x=0;x<planets.size();x++){
+    pushStyle();
+    fill(255);
+    textAlign(CENTER,TOP);
+    text(planets.get(x).getPlanetName(),0,((height/4)/planets.size())*x,planetSelectWidth, planetSelectHeight) ;
+    popStyle();
+    }
   }
 
   // the settings menu
