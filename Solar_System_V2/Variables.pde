@@ -32,8 +32,8 @@ float orbitThickness = 1;
 
 
 // Text Settings
-int titleSize = 55;
-int generalTextSize = 30;
+int titleSize;
+int generalTextSize;
 
 // Text Placeholders
 String title = "Welcome to our local solar system!";

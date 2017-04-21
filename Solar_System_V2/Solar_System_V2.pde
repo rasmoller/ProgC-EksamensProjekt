@@ -10,10 +10,12 @@ void setup()
 {
   fullScreen(P3D);
   //size(500, 500, P3D);
-  frameRate(144);
+  //frameRate(144);
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
   loadSizes();
+  titleSize = width/40;
+  generalTextSize = width/65;
   scalingSlider = new slider();
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
