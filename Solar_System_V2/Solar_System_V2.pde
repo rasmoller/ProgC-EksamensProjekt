@@ -14,8 +14,11 @@ void setup()
   surface.setTitle("Solar System V2");
   loadImages(imageQual);
   loadSizes();
+  //Text formatting
   titleSize = width/40;
   generalTextSize = width/65;
+  standardFont = createFont("Carlito-48.vwl", 50, true);
+  
   scalingSlider = new slider();
   // planets initializing
   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle);
