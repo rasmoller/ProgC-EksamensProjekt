@@ -2,9 +2,9 @@
 ArrayList<Planets> planets = new ArrayList<Planets>();
 
 // Planets
-Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
+Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, activePlanet;
+PVector activePlanetCoords;
 slider scalingSlider;
-int activePlanet;
 
 // Textures
 PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh, settingsButton, escape;
@@ -15,7 +15,8 @@ UI ui;
 
 // Global Variables
 float camMinimum = 200;
-float camMaximum = 10000;
+float camMaximum = 7600;
+double camDistance;
 boolean drawNames = false;
 boolean drawOrbit = false;
 boolean tiltTrue = false;

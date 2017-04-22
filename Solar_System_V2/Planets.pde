@@ -1,11 +1,10 @@
 class Planets 
 {
-   float radius, orbitSpeed, rotationSpeed, distance;
+   float radius, orbitSpeed, rotationSpeed, distance = 0;
    String name;
    PImage texture;
    PShape planet;
-   color c;
-   float angle;
+   float angle = 0;
    float rotation = 0;
    float inclination;
 
@@ -22,11 +21,7 @@ class Planets
       this.inclination = inclination;
    }
 
-   void moons(String name, float size, float distance) 
-   {
-   }
-
-   void display(float scaling) 
+   void display() 
    {
       // find a way to make speed a multiplier for angle
       // the angle of the orbit
@@ -46,10 +41,6 @@ class Planets
             pushMatrix();
             rotateY(rotation);
             shape(planet, 0, 0);
-            //if (drawRings)
-            //{
-            drawRings();
-            //}
             popMatrix();
             rotation += rotationSpeed;
          } else 
@@ -112,11 +103,6 @@ class Planets
       ellipse(0, 0, distance*2, distance*2);
       popStyle();
       popMatrix();
-   }
-   void drawRings() {
-   }
-   String getPlanetName(){
-   return name;
    }
    float getAngle(){
    return angle;

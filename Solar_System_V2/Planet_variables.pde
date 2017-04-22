@@ -1,3 +1,27 @@
+void planetInitialization() {
+   // planets initializing
+   // new Planets(name, radius, distance, texture, orbitSpeed, rotationSpeed, startingAngle, Inclination);
+   sun = new Planets("Sun", sunRadius, 0, sunMesh, 0, 0, 0, 0);
+   mercury = new Planets("Mercury", mercuryRadius, mercuryDistance, mercuryMesh, mercurySpeed, mercuryRotation, random(0, TWO_PI), mercuryInclination);
+   venus = new Planets("Venus", venusRadius, venusDistance, venusMesh, venusSpeed, venusRotation, random(0, TWO_PI), venusInclination);
+   earth = new Planets("Earth", earthRadius, earthDistance, earthMesh, earthSpeed, earthRotation, random(0, TWO_PI), earthInclination);
+   mars = new Planets("Mars", marsRadius, marsDistance, marsMesh, marsSpeed, marsRotation, random(0, TWO_PI), marsInclination);
+   jupiter = new Planets("Jupiter", jupiterRadius, jupiterDistance, jupiterMesh, jupiterSpeed, jupiterRotation, random(0, TWO_PI), jupiterInclination);
+   saturn = new Planets("Saturn", saturnRadius, saturnDistance, saturnMesh, saturnSpeed, saturnRotation, random(0, TWO_PI), saturnInclination);
+   uranus = new Planets("Uranus", uranusRadius, uranusDistance, uranusMesh, uranusSpeed, uranusRotation, random(0, TWO_PI), uranusInclination);
+   neptune = new Planets("Neptune", neptuneRadius, neptuneDistance, neptuneMesh, neptuneSpeed, neptuneRotation, random(0, TWO_PI), neptuneInclination);
+
+   // adding objects to arraylist (im excluding the sun to make lighting works)
+   planets.add(mercury);
+   planets.add(venus);
+   planets.add(earth);
+   planets.add(mars);
+   planets.add(jupiter);
+   planets.add(saturn);
+   planets.add(uranus);
+   planets.add(neptune);
+}
+
 // Planet sizes
 float earthRadius = 6.378; // original størrelse = 6.378, noget km
 float sunRadius = earthRadius * 13; // eneste der ikke er akkurat og bruger jorden til at definere de andre
