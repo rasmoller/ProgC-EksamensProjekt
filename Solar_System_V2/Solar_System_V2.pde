@@ -35,9 +35,9 @@ void draw()
 {
    //Using its rotations to place name of planets
    cameraRotations = cam.getRotations();
-   activePlanetCoords = activePlanetCoord(activePlanet);
+   //activePlanetCoords = activePlanetCoord(activePlanet);
    camDistance = cam.getDistance();
-   cam.lookAt(activePlanetCoords.x,activePlanetCoords.y,0,camDistance,0);
+   //cam.lookAt(activePlanetCoords.x,activePlanetCoords.y,0,camDistance,0);
 
    //First resizing the background so it fits all resolutions then applying it
    background(background);
