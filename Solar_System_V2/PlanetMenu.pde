@@ -20,20 +20,21 @@ class UI
       if (startScreen)
       {
          startScreen();
-      } else
-      {
-         if (showUI)
-         {
-            if (settingsBox)
-            {
-               settingsBox();
-            } else
-            {
-               planetSelect();
-               settingsButton();
-            }
-         }
-      }
+      } 
+      //else
+      //{
+      //   if (showUI)
+      //   {
+      //      if (settingsBox)
+      //      {
+      //         settingsBox();
+      //      } else
+      //      {
+      //         planetSelect();
+      //         settingsButton();
+      //      }
+      //   }
+      //}
       popStyle();
       cam.endHUD();
    }

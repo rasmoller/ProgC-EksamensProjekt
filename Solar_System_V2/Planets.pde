@@ -9,7 +9,7 @@ class Planets
    float inclination;
 
 
-   Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle, float inclination) 
+   Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle) 
    {
       this.texture = texture;
       this.orbitSpeed = orbitSpeed * scaling;
@@ -18,7 +18,6 @@ class Planets
       this.distance = distance;
       this.radius = radius;
       this.angle = 0 + startAngle;
-      this.inclination = inclination;
    }
 
    void display() 

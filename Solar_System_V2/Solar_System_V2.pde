@@ -9,18 +9,15 @@ import peasy.*;
 void setup() 
 {
    fullScreen(P3D);
-   //size(500, 500, P3D);
-   //frameRate(144);
+   //title of the program
    surface.setTitle("Solar System V2");
-   loadImages(imageQual);
+   loadImages();
    loadSizes();
    titleSize = width/40;
    generalTextSize = width/65;
 
-   //scalingSlider = new slider();
    //initializing all planets and putting them into the arraylist
    planetInitialization();
-   activePlanetCoords = new PVector(0,0);
    //Resizing the background so it fits all displays
    background.resize(width, height);
 
@@ -35,19 +32,16 @@ void draw()
 {
    //Using its rotations to place name of planets
    cameraRotations = cam.getRotations();
-   //activePlanetCoords = activePlanetCoord(activePlanet);
-   camDistance = cam.getDistance();
-   //cam.lookAt(activePlanetCoords.x,activePlanetCoords.y,0,camDistance,0);
 
    //First resizing the background so it fits all resolutions then applying it
    background(background);
 
    // make you able to change image quality
-   if (imageQual != imageQualTemp)
-   {
-      loadImages(imageQual);
-      imageQualTemp = imageQual;
-   }
+   //if (imageQual != imageQualTemp)
+   //{
+   //   loadImages(imageQual);
+   //   imageQualTemp = imageQual;
+   //}
 
    //Drawing sun before light cause otherwise the inside of the sun would light up
    sun.display();
@@ -93,46 +87,35 @@ void keyReleased()
             showUI = true;
          }
       }
-      if (key == 'z' || key == 'Z')
-      {
-         if (debug==true) {
-            showUI = !showUI;
-         } else {
-            showUI = true;
-         }
-      }
+      //if (key == 'z' || key == 'Z')
+      //{
+      //   if (debug==true) {
+      //      showUI = !showUI;
+      //   } else {
+      //      showUI = true;
+      //   }
+      //}
    }
 }
 void mousePressed()
 {
-   if (showUI)
-   {
-      if (!settingsBox) {
-         // activating settingsBox
-         if (mouseX > settingsButtonX && mouseX < settingsButtonX + settingsButtonWidth && mouseY > settingsButtonY)
-         {
-            disableCam();
-            settingsBox = !settingsBox;
-         }
-         //planetMenu
-         for (int x=0;x<planets.size();x++) {
-            if (
-            mouseX > 0 && 
-            mouseX < planetSelectWidth && 
-            mouseY > ((height/4)/planets.size())*x && 
-            mouseY < (((height/4)/planets.size())*x) + planetSelectHeight
-            ) {
-               activePlanet = planets.get(x);
-            }
-         }
-      }
-      if (settingsBox) {
-         if (mouseX > escSettingsBoxX && mouseX < escSettingsBoxX + escSettingsBoxWidth && mouseY > escSettingsBoxY) {
-            settingsBox = !settingsBox;
-            enableCam();
-         }
-      }
-   }
+   //if (showUI)
+   //{
+   //   if (!settingsBox) {
+   //      // activating settingsBox
+   //      if (mouseX > settingsButtonX && mouseX < settingsButtonX + settingsButtonWidth && mouseY > settingsButtonY)
+   //      {
+   //         disableCam();
+   //         settingsBox = !settingsBox;
+   //      }
+   //   }
+   //   if (settingsBox) {
+   //      if (mouseX > escSettingsBoxX && mouseX < escSettingsBoxX + escSettingsBoxWidth && mouseY > escSettingsBoxY) {
+   //         settingsBox = !settingsBox;
+   //         enableCam();
+   //      }
+   //   }
+   //}
 
    if (startScreen && mouseX > startButtonX && mouseX < startButtonX + startButtonWidth && mouseY > startButtonY && mouseY < startButtonY + startButtonHeight)
    {

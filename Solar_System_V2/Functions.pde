@@ -1,51 +1,16 @@
 // loads images with the fitting quality
-void loadImages(int imageQual) 
+void loadImages() 
 {
-
-   //Low - Standard
-   if (imageQual == 1)
-   {
-      background = loadImage("low/background.jpg");
-      sunMesh = loadImage("low/sun_texture.jpg");
-      mercuryMesh = loadImage("low/mercury_texture.png");
-      venusMesh = loadImage("low/venus_texture.jpg");
-      earthMesh = loadImage("low/earth_texture.jpg");
-      marsMesh = loadImage("low/mars_texture.jpg");
-      jupiterMesh = loadImage("low/jupiter_texture.jpg");
-      saturnMesh = loadImage("low/saturn_texture.jpg");
-      uranusMesh = loadImage("low/uranus_texture.jpg");
-      neptuneMesh = loadImage("low/neptune_texture.jpg");
-   }
-
-   //Medium
-   if (imageQual == 2)
-   {
-      background = loadImage("medium/background.jpg");
-      sunMesh = loadImage("medium/sun_texture.jpg");
-      mercuryMesh = loadImage("medium/mercury_texture.png");
-      venusMesh = loadImage("medium/venus_texture.jpg");
-      earthMesh = loadImage("medium/earth_texture.jpg");
-      marsMesh = loadImage("medium/mars_texture.jpg");
-      jupiterMesh = loadImage("medium/jupiter_texture.jpg");
-      saturnMesh = loadImage("medium/saturn_texture.jpg");
-      uranusMesh = loadImage("medium/uranus_texture.jpg");
-      neptuneMesh = loadImage("medium/neptune_texture.jpg");
-   }
-
-   //High
-   if (imageQual == 3)
-   {
-      background = loadImage("high/background.jpg");
-      sunMesh = loadImage("high/sun_texture.jpg");
-      mercuryMesh = loadImage("high/mercury_texture.png");
-      venusMesh = loadImage("high/venus_texture.jpg");
-      earthMesh = loadImage("high/earth_texture.jpg");
-      marsMesh = loadImage("high/mars_texture.jpg");
-      jupiterMesh = loadImage("high/jupiter_texture.jpg");
-      saturnMesh = loadImage("high/saturn_texture.jpg");
-      uranusMesh = loadImage("high/uranus_texture.jpg");
-      neptuneMesh = loadImage("high/neptune_texture.jpg");
-   }
+   background = loadImage("meshes/background.jpg");
+   sunMesh = loadImage("meshes/sun_texture.jpg");
+   mercuryMesh = loadImage("meshes/mercury_texture.png");
+   venusMesh = loadImage("meshes/venus_texture.jpg");
+   earthMesh = loadImage("meshes/earth_texture.jpg");
+   marsMesh = loadImage("meshes/mars_texture.jpg");
+   jupiterMesh = loadImage("meshes/jupiter_texture.jpg");
+   saturnMesh = loadImage("meshes/saturn_texture.jpg");
+   uranusMesh = loadImage("meshes/uranus_texture.jpg");
+   neptuneMesh = loadImage("meshes/neptune_texture.jpg");
 
    //Utility
    settingsButton = loadImage("utility/SettingsButton.png");
@@ -81,15 +46,6 @@ void camSettings() {
    cam.setSuppressRollRotationMode();
    cam.setCenterDragHandler(null);
    cam.setResetOnDoubleClick(false);
-}
-PVector activePlanetCoord(Planets planet) {
-   float angle = planet.getAngle();
-   float distance = planet.getDistance();
-   PVector coordinates;
-   float x = cos(angle)*distance;
-   float y = sin(angle)*distance;
-   coordinates = new PVector(x, y);
-   return coordinates;
 }
 // homemade functions for enabling and disabling the camera
 void disableCam()
