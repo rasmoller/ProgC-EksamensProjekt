@@ -64,7 +64,7 @@ class UI
       pushStyle();
       fill(255);
       textAlign(LEFT);
-      text("Scaling: " + scaling + "\n" + "Distance: " + (int)distance, 0, 0, infoBoxWidth, infoBoxHeight);
+      text("Scaling: " + (int)scaling + "\n" + "Distance: " + (int)distance, 0, 0, infoBoxWidth, infoBoxHeight);
       popStyle();
    }
 }
