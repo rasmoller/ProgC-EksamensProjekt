@@ -15,6 +15,8 @@ void setup()
   loadSizes();
   titleSize = width/40;
   generalTextSize = width/80;
+  standardFont = createFont("Carlito-48.vwl", 50, true);
+  textFont(standardFont);
 
   //initializing all planets and putting them into the arraylist
   planetInitialization();
@@ -36,7 +38,6 @@ void draw()
   //First resizing the background so it fits all resolutions then applying it
   background(background);
 
-
   //Drawing sun before light cause otherwise the inside of the sun would light up
   sun.display();
 
@@ -56,7 +57,7 @@ void draw()
     debug();
   }
   //Menu for information about the planets
-  ui.controller(startScreen, showUI);
+  ui.controller(startScreen);
 }
 
 void keyReleased() 

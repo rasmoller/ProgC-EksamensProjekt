@@ -16,11 +16,8 @@ float camMinimum = 200;
 float camMaximum = 7600;
 boolean drawNames = false;
 boolean drawOrbit = false;
-boolean tiltTrue = false;
 boolean debug = false;
 boolean startScreen = true;
-boolean showUI = true;
-boolean settingsBox = false;
 float[] cameraRotations;
 float debugDistance = 3000;
 int imageQual = 3;
@@ -32,6 +29,7 @@ float orbitThickness = 1;
 // Text Settings
 int titleSize;
 int generalTextSize;
+PFont standardFont;
 
 // Text Placeholders
 String title = "Welcome to our local solar system!";

@@ -1,7 +1,6 @@
 class UI 
 {
-   PFont standardFont;
-   void controller(boolean startScreen, boolean showUI)
+   void controller(boolean startScreen)
    {
       // "makes it 2D" draw things that you want relative to the camera's position and orientation
       cam.beginHUD();
@@ -10,8 +9,6 @@ class UI
       pushStyle();
       // design of HUD
       strokeJoin(ROUND);
-      standardFont = createFont("Carlito-48.vwl", 50, true);
-      textFont(standardFont);
       strokeWeight(3);
       stroke(20);
       fill(10);
@@ -21,20 +18,6 @@ class UI
       {
          startScreen();
       } 
-      //else
-      //{
-      //   if (showUI)
-      //   {
-      //      if (settingsBox)
-      //      {
-      //         settingsBox();
-      //      } else
-      //      {
-      //         planetSelect();
-      //         settingsButton();
-      //      }
-      //   }
-      //}
       popStyle();
       cam.endHUD();
    }
@@ -73,76 +56,5 @@ class UI
       //Start button
       text(startButtonText, startButtonX, startButtonY, startButtonWidth, startButtonHeight);
       popStyle();
-   }
-
-   // choose what planet you want to look at (yet to get implemented)
-   void planetSelect() 
-   {
-      rect(0, 0, planetSelectWidth, planetSelectHeight);
-      pushStyle();
-      fill(255);
-      textAlign(CENTER, TOP);
-      for (int x=0; x<planets.size(); x++) {
-         text(planets.get(x).name, 0, ((height/4)/planets.size())*x, planetSelectWidth, planetSelectHeight) ;
-      }
-      popStyle();
-   }
-
-   // the settings menu
-   void settingsBox()
-   {
-      rect(settingsBoxX, settingsBoxY, settingsBoxWidth, settingsBoxHeight);
-      escSettingsBox();
-      pictureSettings();
-   }
-
-   // used for closing the settings
-   void escSettingsBox()
-   {
-      rect(escSettingsBoxX, escSettingsBoxY, escSettingsBoxWidth, escSettingsBoxHeight);
-      image(escape, escSettingsBoxX, escSettingsBoxY, escSettingsBoxWidth, escSettingsBoxHeight);
-   }
-
-   // used for getting into the settings
-   void settingsButton()
-   {
-      if (hover(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight)) {
-         pushStyle();
-         fill(60);
-         rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
-         popStyle();
-      } else {
-         rect(settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
-      }
-      pushStyle();
-      fill(255);
-      image(settingsButton, settingsButtonX, settingsButtonY, settingsButtonWidth, settingsButtonHeight);
-      popStyle();
-   }
-   void pictureSettings() {
-      for (int x = 0; x < 3; x++) {
-         pushStyle();
-         if (hover(settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3)) {
-            fill(60);
-         }
-         rect(settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3);
-         popStyle();
-         pushStyle();
-
-         fill(255);
-
-         switch(x) {
-         case 0:
-            text("low", settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3);
-            break;
-         case 1:
-            text("medium", settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3);
-            break;
-         case 2:
-            text("high", settingsBoxX + (settingsBoxWidth/4)*3, settingsBoxY + (settingsBoxHeight/3)*x, settingsBoxWidth/6, settingsBoxHeight/3);
-            break;
-         }
-         popStyle();
-      }
    }
 }
