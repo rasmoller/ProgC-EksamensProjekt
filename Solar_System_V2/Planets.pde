@@ -12,8 +12,8 @@ class Planets
    Planets(String name, float radius, float distance, PImage texture, float orbitSpeed, float rotationSpeed, float startAngle) 
    {
       this.texture = texture;
-      this.orbitSpeed = orbitSpeed * scaling;
-      this.rotationSpeed = rotationSpeed * scaling;
+      this.orbitSpeed = orbitSpeed;
+      this.rotationSpeed = rotationSpeed;
       this.name = name;
       this.distance = distance;
       this.radius = radius;
@@ -22,7 +22,6 @@ class Planets
 
    void display() 
    {
-      // find a way to make speed a multiplier for angle
       // the angle of the orbit
       if (angle < TWO_PI*2) {
          pushMatrix();
@@ -41,7 +40,7 @@ class Planets
             rotateY(rotation);
             shape(planet, 0, 0);
             popMatrix();
-            rotation += rotationSpeed;
+            rotation += rotationSpeed * scaling;
          } else 
          {
             rotation = 0;
@@ -56,7 +55,7 @@ class Planets
             printName();
          }
 
-         angle+= orbitSpeed;
+         angle+= orbitSpeed * scaling;
       } else 
       {
          angle = 0;
