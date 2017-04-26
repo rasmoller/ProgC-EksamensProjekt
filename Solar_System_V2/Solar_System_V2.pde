@@ -107,7 +107,10 @@ void keyReleased()
 void mousePressed()
 {
 
-   if (startScreen && mouseX > startButtonX && mouseX < startButtonX + startButtonWidth && mouseY > startButtonY && mouseY < startButtonY + startButtonHeight)
+   if (startScreen && mouseX > startButtonX 
+      && mouseX < startButtonX + startButtonWidth 
+      && mouseY > startButtonY 
+      && mouseY < startButtonY + startButtonHeight)
    {
       startScreen = !startScreen;
       enableCam();

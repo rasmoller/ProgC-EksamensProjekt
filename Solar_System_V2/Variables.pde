@@ -5,7 +5,8 @@ ArrayList<Planets> planets = new ArrayList<Planets>();
 Planets sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, activePlanet;
 
 // Textures
-PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh, marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh, settingsButton, escape;
+PImage background, sunMesh, mercuryMesh, venusMesh, earthMesh;
+PImage marsMesh, jupiterMesh, saturnMesh, uranusMesh, neptuneMesh, settingsButton, escape;
 
 // Classes
 PeasyCam cam;

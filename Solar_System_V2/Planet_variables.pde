@@ -48,17 +48,7 @@ float saturnDistance = AU * 10;
 float uranusDistance = AU * 20.1;
 float neptuneDistance = AU * 30.33;
 
-// Planets inclination to Sun's equator in degrees (hvor meget den hælder til siden) (BRUG DET HER TIL HÆLDNING!!!)
-float mercuryInclination = 3.38;
-float venusInclination = 3.86;
-float earthInclination = 7.155;
-float marsInclination = 5.65;
-float jupiterInclination = 6.09;
-float saturnInclination = 5.51;
-float uranusInclination = 6.48;
-float neptuneInclination = 6.43;
-
-// Orbit speed ( earth's averag orbital speed = 29.78 km/s) (find more precise numbers!!)
+// Orbit speed ( earth's averag orbital speed = 29.78 km/s)
 float mercurySpeed = 0.0075;
 float venusSpeed = 0.006;
 float earthSpeed = 0.005;
@@ -68,7 +58,7 @@ float saturnSpeed =  0.00165;
 float uranusSpeed = 0.00125;
 float neptuneSpeed = 0.001;
 
-// Rotation speed (find precise numbers!!)
+// Rotation speed
 float mercuryRotation = 0.005;
 float venusRotation = 0.005;
 float earthRotation = 0.05;
