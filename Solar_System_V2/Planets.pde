@@ -102,10 +102,10 @@ class Planets
       popStyle();
       popMatrix();
    }
-   float getAngle(){
-   return angle;
+   float getAngle() {
+      return angle;
    }
-   float getDistance(){
-   return distance;
+   float getDistance() {
+      return distance;
    }
 }

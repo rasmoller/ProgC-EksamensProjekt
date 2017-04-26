@@ -17,7 +17,9 @@ class UI
       if (startScreen)
       {
          startScreen();
-      } 
+      } else {
+         infoBox();
+      }
       popStyle();
       cam.endHUD();
    }
@@ -55,6 +57,14 @@ class UI
       fill(255);
       //Start button
       text(startButtonText, startButtonX, startButtonY, startButtonWidth, startButtonHeight);
+      popStyle();
+   }
+   void infoBox() {
+      rect(0, 0, infoBoxWidth, infoBoxHeight);
+      pushStyle();
+      fill(255);
+      textAlign(LEFT);
+      text("Scaling: " + scaling + "\n" + "Distance: " + (int)distance, 0, 0, infoBoxWidth, infoBoxHeight);
       popStyle();
    }
 }
